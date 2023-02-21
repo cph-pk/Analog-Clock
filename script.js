@@ -3,23 +3,20 @@ setInterval(setClock, 1000)
 const hourHand = document.querySelector('[data-hour-hand]')
 const minuteHand = document.querySelector('[data-minute-hand]')
 const secondHand = document.querySelector('[data-second-hand]')
-const point = document.getElementById('point')
+const point = document.getElementById('minute-marks')
 
 for (let i = 1; i <= 60; i++) {
+    let tag = document.createElement("div")
     if (!(i % 5 === 0)) {
-        let tag = document.createElement("div")
         let text = document.createTextNode("|")
         tag.append(text)
-        tag.classList.add("point")
-        tag.style.cssText += "--rotation: " + (i * 6) + "deg"
-        point.appendChild(tag)
+        tag.classList.add("marks")
     } else {
-        let tag = document.createElement("div")
-        tag.classList.add("point")
-        tag.classList.add("triangle-down")
-        tag.style.cssText += "--rotation: " + (i * 6) + "deg"
-        point.appendChild(tag)
+        tag.classList.add("marks")
+        tag.classList.add("triangle")
     }
+    tag.style.cssText += "--rotation: " + (i * 6) + "deg"
+    point.appendChild(tag)
 }
 
 function setClock() {
